@@ -58,6 +58,8 @@ void fixIAT() {
 
 void fixReloc()
 {
+	if (globalParam.RelocHeaderRva == 0) //若源程序的重定位目录不存在，则跳过
+		return;
 	uint64_t hModule = (uint64_t)GetCurrentModuleBaseAddress();
 	PIMAGE_BASE_RELOCATION Reloc = (PIMAGE_BASE_RELOCATION)(hModule + globalParam.RelocHeaderRva);
 

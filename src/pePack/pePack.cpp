@@ -8,7 +8,7 @@
 #include "PEImage.h"
 int main()
 {
-	std::string targetName = R"(D:\Users\Desktop\demo\libWvDownloader.dll)";
+	std::string targetName = R"(D:\Downloads\example\example\01\01\bin\HelloWorld.exe)";
 	std::string stubName = "stub.dll";
 
 	PEfile tarFile;

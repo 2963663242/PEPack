@@ -8,7 +8,11 @@
 #include "PEImage.h"
 int main()
 {
-	std::string targetName = R"(D:\Downloads\example\example\01\01\bin\HelloWorld.exe)";
+#ifdef _WIN64
+	std::string targetName = R"(D:\leidian\vmp.kanxue\2\hello\build\Release\hello.exe)";
+#else
+	std::string targetName = R"(D:\Downloads\example\example\01\02\bin\HelloWorld.exe)";
+#endif
 	std::string stubName = "stub.dll";
 
 	PEfile tarFile;

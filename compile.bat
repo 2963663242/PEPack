@@ -1,6 +1,15 @@
 @echo off
 setlocal
 
+
+if "%~1"=="x64" (
+    set "ARCH=x64"
+) else (
+    set "ARCH=Win32"
+)
+
+echo ARCH is %ARCH%
+
 :: 查找 vcpkg 的路径
 for /f "delims=" %%i in ('where vcpkg') do set VCPKG_PATH=%%i
 
@@ -19,7 +28,7 @@ set VCPKG_ROOT=%VCPKG_PATH:~0,-10%
 :: 使用 CMake 构建项目
 mkdir build
 cd build
-cmake .. -DCMAKE_TOOLCHAIN_FILE=%VCPKG_ROOT%\scripts\buildsystems\vcpkg.cmake
+cmake .. -DCMAKE_TOOLCHAIN_FILE=%VCPKG_ROOT%\scripts\buildsystems\vcpkg.cmake  -A  %ARCH%
 cmake --build .
 
 endlocal

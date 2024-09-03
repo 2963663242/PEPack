@@ -8,7 +8,7 @@ GlobalParam globalParam = { 0,0,0,0,(uint64_t)START };
 
 extern "C" void* _main();
 extern "C" void(*gep)();
-void(*gep)();
+void(*gep)()=0;
 
 
 typedef struct
@@ -156,6 +156,8 @@ void encryptIAT() {
 }
 
 void* _main() {
+	if (gep)
+		return gep;
 	fixIAT();
 	fixReloc();
 	encryptIAT();
